@@ -159,5 +159,7 @@ public class day7scooter {
 		for (Entry<String,String> mapData : tableData.entrySet()) {
 			System.out.println("The model is " +mapData.getKey() +"The price is " +mapData.getValue());
 		}
+		
+		driver.close();
     
 }}
