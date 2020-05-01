@@ -83,6 +83,7 @@ public void shiksha() throws InterruptedException
 			break;
 		}
 	}
+	Thread.sleep(1000);
 	driver.findElementByXPath("(//div[@class='tuple-title']//a[text()='"+leastClg+"']/following::p[text()='Add to compare'])[1]").click();
 	
 	//Select the first college under Compare with similar colleges
@@ -124,9 +125,10 @@ public void shiksha() throws InterruptedException
 	//Print all the warning messages displayed on the screen for missed mandatory fields
 	 List<WebElement> warnMsgs = driver.findElementsByXPath("//div[@class='helper-text' and contains(text(),'Please')]");
 	 for (WebElement eachWarn : warnMsgs) {
+		 if(eachWarn.getText().length()>0) {
 		 System.out.println(eachWarn.getText());
 		
-	}
+	}}
 	 
 	 driver.close();
 	
