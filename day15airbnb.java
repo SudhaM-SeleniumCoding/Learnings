@@ -191,25 +191,18 @@ public void airbnb() throws InterruptedException, ParseException
 	List<WebElement> bedRoomCount = driver.findElementsByXPath("//*[text()='Sleeping arrangements']//following::div[contains(text(),'Bedroom')]");
 	List<WebElement> bedCount = driver.findElementsByXPath("//*[text()='Sleeping arrangements']//following::div[contains(text(),'Bedroom')]/following-sibling::div");
 	System.out.println("The size is" +bedRoomCount.size());
+	int j=bedRoomCount.size()-1;
 	
 	Map<String,String> map=new LinkedHashMap<String,String>();
-    for (int i=0;i<=bedRoomCount.size()-1;i++) {
-    	if(i==3)
+    for (int i=0;i<=j;i++) {
+    	if(i>=3)
     	{
-    		js.executeScript("arguments[0].click();",driver.findElementByXPath("//button[@type='button' and @class='_v1r3yxg']"));
+    		js.executeScript("arguments[0].click();",driver.findElementByXPath("//div[contains(@style,'right') and @class='_1mlprnc']//button"));
+    		Thread.sleep(1000);
     		bedRoomCount.add(driver.findElementByXPath("//*[text()='Sleeping arrangements']//following::div[contains(text(),'Bedroom')]["+(i+1)+"]"));
     		bedCount.add(driver.findElementByXPath("(//*[text()='Sleeping arrangements']//following::div[contains(text(),'Bedroom')]/following-sibling::div)["+(i+1)+"]"));
     	}
     	
-    	if(i==4)
-    	{
-    		Thread.sleep(1000);
-    		js.executeScript("arguments[0].click();", driver.findElementByXPath("(//button[@type='button' and @class='_v1r3yxg'])[2]"));
-    		bedRoomCount.add(driver.findElementByXPath("//*[text()='Sleeping arrangements']//following::div[contains(text(),'Bedroom')]["+(i+1)+"]"));
-    		bedCount.add(driver.findElementByXPath("(//*[text()='Sleeping arrangements']//following::div[contains(text(),'Bedroom')]/following-sibling::div)["+(i+1)+"]"));
-    		
-    	}
-   
     	 map.put(bedRoomCount.get(i).getText(),bedCount.get(i).getText());
     }
     
